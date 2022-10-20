@@ -1,0 +1,11 @@
+pandas
+numpy
+dash
+dash_bootstrap_components
+plotly
+gunicorn
+PyGithub
+tqdm
+bs4
+requests_html
+GitPython
