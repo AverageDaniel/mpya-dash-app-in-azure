@@ -5,7 +5,6 @@ import json
 import re
 from ast import literal_eval
 
-from github import Github
 import requests
 import os
 from zipfile import ZipFile
@@ -20,8 +19,11 @@ from plotly.subplots import make_subplots
 import utils
 
 #from memory_profiler import profile
+import sys
 
 local = True
+
+print("Variable named local is set to", local,", should it be?")
 
 #####################################################################################################################################
 # Create Dash-App
@@ -38,12 +40,8 @@ mpya_style_cards = {'font-family': mpya_font, 'background-color': utils.rgb_adde
 mpya_style_act_tab = {'font-family': mpya_font, 'background': utils.rgb_adder(mpya_dark_blue, 0.5), 'color': mpya_grey}
 mpya_style_pas_tab = {'font-family': mpya_font, 'background': mpya_grey, 'color': mpya_dark_blue}
 
-#utils.pull_repo()
-    
-#profiles, company_info_map, ignore_competences, ignore_titles, cities = utils.get_gh_resources()
 profiles, company_info_map, ignore_competences, ignore_titles, cities = utils.get_local_resources()
 dfs = {}
-#dfs['Current'] = utils.get_gh_dataframe(profiles["Yellow Submarine"]["Data Science"], cities.keys())
 dfs['Current'] = utils.get_local_dataframe(profiles["Yellow Submarine"]["Data Science"], cities.keys())
 
 teams = list(profiles.keys())
@@ -73,7 +71,6 @@ def update_ads(team, cat, loc, g_b_v):
     if loc == []:
         return {}, {}, [], [], [], [], [], [], dfs['Current'].locs
     if dfs['Current'].name != cat:
-        #dfs['Current'] = utils.get_gh_dataframe(profiles[team][cat], cities)
         dfs['Current'] = None
         dfs['Current'] = utils.get_local_dataframe(profiles[team][cat], cities)
         if dfs['Current'].empty:
@@ -82,30 +79,31 @@ def update_ads(team, cat, loc, g_b_v):
     if type(loc) != list:
         loc = [loc]
     loc_df = cat_df[(cat_df.location.isin(loc))]
-    g_b_val = list(np.unique([g_b_v, "year"]))
+    g_b_val = list(np.unique(["year", g_b_v]))
     trends = loc_df.groupby(g_b_val).agg(companies=('company', 'unique'), 
                                      nr_of_ads=('location', 'size')).reset_index()
     trends['nr_of_companies'] = trends.companies.apply(lambda x: len(x))
     trends['ratio'] = trends.nr_of_ads / trends.nr_of_companies
-    fig1 = make_subplots(rows=1, cols=2, shared_yaxes=False, subplot_titles=['Annonser', 'Företag'])
-    fig1.update_layout({'font_family': mpya_font[-1], 'font_color': mpya_grey, 'paper_bgcolor': 'rgba(0,0,0,0)', 'plot_bgcolor': 'rgba(0,0,0,0)'})
+    
     col = mpya_purple
-    for year in np.sort(trends.year.unique()):
-        sub = trends[trends.year == year]
-        fig1.add_trace(go.Bar(x=sub[g_b_v], y=sub.nr_of_companies, marker=dict(color=col), showlegend=False, name=str(year)), 1, 2)
-        fig1.add_trace(go.Bar(x=sub[g_b_v], y=sub.nr_of_ads, marker=dict(color=col), showlegend=False, name=str(year)), 1, 1)
-    fig1.update_xaxes(dtick=1, title_text = utils.first_to_upper(g_b_v))
-    trends['year_'] = trends['year'].astype(str)
-    cdm={y: mpya_purple for y in trends['year_'].unique()}
-    fig2 = px.bar(trends, x=g_b_v, y="ratio", color="year_", color_discrete_map=cdm, barmode="group", labels={
-                    g_b_v: utils.first_to_upper(g_b_v),
-                     "year_": "Year",
-                    "ratio": "Ratio"
-                }, title="Ratio (annonser/företag)")
-    fig2.update_xaxes(showgrid=False)
+    sub = trends.sort_values(['year', g_b_v])
+    if g_b_v != 'year':
+        sub.index = "Year: "+sub['year'].astype(str)+" "+utils.first_to_upper(g_b_v)+": "+sub[g_b_v].astype(str)
+    else:
+        sub.index = "Year: "+sub['year'].astype(str)
+    year_to_val_ratio = (len(sub)/len(sub.year.unique()))
+    
+    fig1 = make_subplots(rows=1, cols=2, shared_yaxes=False, subplot_titles=['Annonser', 'Företag'])
+    fig1.add_trace(go.Bar(x=sub.index, y=sub.nr_of_companies, marker=dict(color=col), showlegend=False, name=""), 1, 2)
+    fig1.add_trace(go.Bar(x=sub.index, y=sub.nr_of_ads, marker=dict(color=col), showlegend=False, name=""), 1, 1)
+    fig1.update_layout({'font_family': mpya_font[-1], 'font_color': mpya_grey, 'paper_bgcolor': 'rgba(0,0,0,0)', 'plot_bgcolor': 'rgba(0,0,0,0)'})
+    fig1.update_xaxes(dtick=1, title_text=utils.first_to_upper(g_b_v), tickvals=[((year_to_val_ratio/2)-0.5)+(i*year_to_val_ratio) for i in range(len(sub.year.unique()))], ticktext=sub.year.unique())
+    
+    fig2 = make_subplots(rows=1, cols=1, subplot_titles=["Ratio (annonser/företag)"])
+    fig2.add_trace(go.Bar(x=sub.index, y=sub.ratio, marker=dict(color=col), showlegend=False, name=""), 1, 1)
     fig2.update_layout({'font_family': mpya_font[-1], 'font_color': mpya_grey, 'paper_bgcolor': 'rgba(0,0,0,0)', 'plot_bgcolor': 'rgba(0,0,0,0)'})
-    fig2.update_xaxes(dtick=1, title_text=utils.first_to_upper(g_b_v))
-    fig2.update_layout(showlegend=False)
+    fig2.update_xaxes(dtick=1, title_text=utils.first_to_upper(g_b_v), tickvals=[((year_to_val_ratio/2)-0.5)+(i*year_to_val_ratio) for i in range(len(sub.year.unique()))], ticktext=sub.year.unique())
+    
     options = [{"label": str(y), "value": y} for y in reversed(dfs['Current'].years)]
     close = [c for c in cities if (cities[c] == cities[loc[0]]) and (c != loc[0])]
     locs =  np.array([l for l in cat_df.locs if l in close] + [l for l in cat_df.locs if l not in close])
@@ -126,8 +124,8 @@ def update_cat_dropdown(team):
 )
 def update_profile_output(team, cat):
     kws = profiles[team][cat]['keywords']
-    
-    return html.H5('Keywords för '+cat+'-profilen:'), html.H6(', '.join([utils.first_to_upper(kw) for kw in kws]))
+    query = " AND ".join([utils.first_to_upper(kw) if isinstance(kw, str) else "("+str(' OR '.join([utils.first_to_upper(k) for k in kw]))+")" for kw in kws])
+    return html.H5('Sök-query för '+cat+'-profilen:'), html.H6(query)
 
 @app.callback(
     Output('card-body-2', 'children'),
@@ -187,7 +185,6 @@ def update_card3(loc, checked):
                     [html.Thead([html.Tr([html.Th(col) for col in table_df.columns]+[html.Th("Expandera")])])] +
 
                     # Body
-            #create_title_button(i, table_df.iloc[i], trends)
                     [html.Tbody([html.Tr([html.Td(html.A(table_df.iloc[i][col], id = ""+col+"_"+str(i)))
                         for col in table_df.columns]+[html.Div(html.Button('+', id={"type": "open-modal", "index": table_df.iloc[i]["Företag"]}, n_clicks=0))])
                         for i in range(len(table_df))])]
@@ -317,8 +314,9 @@ app.layout = html.Div(children=[
 
 
 #####################################################################################################################################
-# Run Dash-App
-if local:
-    debug = True
-    app.run_server(debug=debug)
-    app.suppress_callback_exceptions=True
+if __name__ == "__main__":
+    # Run Dash-App
+    if local:
+        debug = True
+        app.run_server(debug=debug)
+        app.suppress_callback_exceptions=True
