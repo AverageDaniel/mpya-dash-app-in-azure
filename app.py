@@ -22,7 +22,11 @@ import utils
 import sys
 
 local = False
+<<<<<<< HEAD
 print()
+=======
+
+>>>>>>> 31f5de8df83f9578995d260ceedd9fceed14af2e
 print("Variable named local is set to", local,", should it be?")
 print()
 input("Press any button to continue")
