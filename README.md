@@ -23,7 +23,7 @@ The profiles are defined in **profiles.json** in a JSON-object with the followin
 profiles = {"Team": {"Profile": {"name": "profile-name",
                                  "keywords": [["search-phrase", "search-phrase"], ["search-phrase", "search-phrase"]]}}}
 ```
-Where the lists in "keywords" are used to build a search query when filtering ads from AF. The queries are built from the list by adding OR between every phrase in the innermost list, and adding AND between each list. So for example the keywords for the profile *Quality Life Science-Medtech* is defined as:
+Where the lists in "keywords" are used to build a search query when filtering ads from AF. The queries are built from the list by adding OR between every phrase in the innermost list, and adding AND between each list. So for example "keywords" for the profile *Quality Life Science-Medtech* is defined as:
 ```
 "keywords": [["Quality", "Kvalitet", "QA", "Quality Assurance"], ["Medtech", "Life Science"]]
 ```
