@@ -311,7 +311,7 @@ app.layout = html.Div(children=[
 #####################################################################################################################################
 if __name__ == "__main__":
     # Run Dash-App
-    local = True
+    local = False
     print()
     print("Variable named local is set to", local,", should it be?")
     print()
