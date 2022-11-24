@@ -1,1 +1,89 @@
-{"Yellow Submarine": {"Data Science": {"name": "Data Science", "keywords": [["data science", "machine learning", "maskininl\u00e4rning", "data engineering"]]}, "Embedded Developer": {"name": "Embedded Developer", "keywords": [["embedded", "C++"]]}}, "Deep Purple": {"Electronics engineer": {"name": "Electronics engineer", "keywords": [["Electronics engineer", "Elektronikingenj\u00f6r"]]}, "Radar": {"name": "Radar", "keywords": [["Radar"]]}, "Power electronics": {"name": "Power electronics", "keywords": [["Power electronics"]]}, "Battery": {"name": "Battery", "keywords": [["Battery"]]}, "Embedded software": {"name": "Embedded software", "keywords": [["Embedded software", "Embedded SW"]]}, "HW": {"name": "HW", "keywords": [["HW", "Hardware"]]}, "PCB": {"name": "PCB", "keywords": [["PCB"]]}, "C++": {"name": "C++", "keywords": [["C++"]]}, "Python": {"name": "Python", "keywords": [["Python"]]}, "Test developer": {"name": "Test developer", "keywords": [["Test developer"]]}, "Quality Life Science-Medtech": {"name": "Quality Life Science-Medtech", "keywords": [["Quality", "Kvalitet", "QA", "Quality Assurance"], ["Medtech", "Life Science"]]}, "Quality Electro": {"name": "Quality Electro", "keywords": [["Quality", "Kvalitet", "QA", "Quality Assurance"], ["Electro", "Electronics"]]}, "Quality Automotive": {"name": "Quality Automotive", "keywords": [["Quality", "Kvalitet", "QA", "Quality Assurance"], "Automotive"]}, "Embedded HW": {"name": "Embedded HW", "keywords": [["Embedded HW", "Embedded Hardware"]]}}, "Kemisk Analys": {"Analytisk kemist": {"name": "Analytisk kemist", "keywords": [["Kemi", "Chemistry", "Chemical"], ["Metodutveckling", "Method development"]]}, "Laboratorieingenj\u00f6r": {"name": "Laboratorieingenj\u00f6r", "keywords": [["Laboratorieingenj\u00f6r", "Laboratory engineer", "Labbingenj\u00f6r"], ["Kemi", "Chemistry", "Chemical", "Mikrobiologi", "Microbiology"]]}, "Materialkemist": {"name": "Materialkemist", "keywords": [["Kemi", "Chemistry", "Chemical"], ["Karakt\u00e4risering", "Characterization", "Mikroskopi", "Microscopy"]]}, "Biokemist": {"name": "Biokemist", "keywords": [["Farmakologi", "Pharmacology", "Biomedicin", "Biomedicine", "Immunologi", "Immunology"]]}}}
+{
+    "Yellow Submarine": 
+        {"Data Science": 
+            {"name": "Data Science", 
+            "keywords": [["data science", "machine learning", "maskininl\u00e4rning", "data engineering"]]
+            }, 
+        "Embedded Developer": 
+            {"name": "Embedded Developer", 
+            "keywords": [["embedded", "C++"]]
+            }
+        }, 
+    "Deep Purple": 
+        {"Electronics engineer": 
+            {"name": "Electronics engineer", 
+            "keywords": [["Electronics engineer", "Elektronikingenj\u00f6r"]]
+            },
+        "Radar": 
+            {"name": "Radar", 
+            "keywords": [["Radar"]]}, 
+        "Power electronics": 
+            {"name": "Power electronics", 
+            "keywords": [["Power electronics"]]}, 
+        "Battery": 
+            {"name": "Battery", 
+            "keywords": [["Battery"]]}, 
+        "Embedded software": 
+            {"name": "Embedded software", 
+            "keywords": [["Embedded software", "Embedded SW"]]},
+        "HW": 
+            {"name": "HW", 
+            "keywords": [["HW", "Hardware"]]},
+        "PCB":
+            {"name": "PCB",
+            "keywords": [["PCB"]]}, 
+        "C++": 
+            {"name": "C++",
+            "keywords": [["C++"]]},
+        "Python":
+            {"name": "Python",
+            "keywords": [["Python"]]},
+        "Test developer": 
+            {"name": "Test developer",
+            "keywords": [["Test developer"]]}, 
+        "Quality Life Science-Medtech":
+            {"name": "Quality Life Science-Medtech", 
+            "keywords": [["Quality", "Kvalitet", "QA", "Quality Assurance"], ["Medtech", "Life Science"]]}, 
+        "Quality Electro": 
+            {"name": "Quality Electro",
+            "keywords": [["Quality", "Kvalitet", "QA", "Quality Assurance"], ["Electro", "Electronics"]]}, 
+        "Quality Automotive":
+            {"name": "Quality Automotive",
+            "keywords": [["Quality", "Kvalitet", "QA", "Quality Assurance"], "Automotive"]}, 
+        "Embedded HW": 
+            {"name": "Embedded HW",
+            "keywords": [["Embedded HW", "Embedded Hardware"]]}
+        }, 
+
+    "Kemisk Analys": 
+        {"Analytisk kemist": 
+            {"name": "Analytisk kemist",
+            "keywords": [["Kemi", "Chemistry", "Chemical"], ["Metodutveckling", "Method development"]]},
+        "Laboratorieingenj\u00f6r":
+            {"name": "Laboratorieingenj\u00f6r",
+            "keywords": [["Laboratorieingenj\u00f6r", "Laboratory engineer", "Labbingenj\u00f6r"], ["Kemi", "Chemistry", "Chemical", "Mikrobiologi", "Microbiology"]]}, 
+        "Materialkemist": 
+            {"name": "Materialkemist",
+            "keywords": [["Kemi", "Chemistry", "Chemical"], ["Karakt\u00e4risering", "Characterization", "Mikroskopi", "Microscopy"]]}, 
+        "Biokemist": 
+        {"name": "Biokemist",
+        "keywords": [["Farmakologi", "Pharmacology", "Biomedicin", "Biomedicine", "Immunologi", "Immunology"]]}
+	},
+    "Team Process Sthlm":
+	{"Valideringsledare":
+	    {"name":"Valideringsledare",
+	    "keywords":[["validation"],["Pharma","Food", "l\u00e4kemedel", "bio", "Life Science", "biotech"],["ingenj\u00f6r", "bioteknik", "kemist", "medicinteknik", "biomedicin", "farmaci", "biologi", "immunologi", "mikrobiologi"]]},
+	"Projektledare":
+	    {"name":"Projektledare",
+	    "keywords":[["Projektledare", "Valideringsledare", "project leader", "validation leader"],["Pharma","Food", "l\u00e4kemedel", "Life Science", "biotech"]]},
+	"Processingenj\u00f6r":
+	    {"name":"Processingenj\u00f6r",
+	    "keywords":[["Processingenj\u00f6r", "process engineer"],["Pharma","Food", "l\u00e4kemedel", "Life Science", "biotech"]]}
+	},
+    "Team kvalitet" :
+	{"QA":
+		{"name":"QA",
+		"keywords" : [["QA", "Quality Assurance"],["Pharma","Food", "l\u00e4kemedel", "Life Science", "biotech"]]
+		}
+	}    
+}	
