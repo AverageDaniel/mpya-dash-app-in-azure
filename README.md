@@ -3,7 +3,7 @@
 ## Repo for mpya-dashboard to be deployed in Azure
 
 The dashboard has been built using the Python library Dash. To learn more about Dash, check their tutorials and documentation at https://dash.plotly.com/ . It's fairly simple and straightforward. 
-Daniel Jakobsson has some knowledge about the structure of this repo/app so further questions about the dashboard can be directed to him(or David Rüdel).
+Daniel Jakobsson has some knowledge about the structure of this repo/app so further questions about the dashboard can be directed to him(or David Rüdel and Cecilia Karlsson about the project in general).
 
 
 To install dependencies run:
