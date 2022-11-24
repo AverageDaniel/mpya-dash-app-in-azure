@@ -21,7 +21,7 @@ import utils
 #from memory_profiler import profile
 import sys
 
-local = True
+local = False
 
 print("Variable named local is set to", local,", should it be?")
 
