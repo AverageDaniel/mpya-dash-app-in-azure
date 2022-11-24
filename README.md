@@ -7,7 +7,7 @@ To install dependencies run:
 pip install -r requirements.txt
 ```
 
-To start the app locally, set the variable ```local=True``` in **app.py** and run:
+To start the app locally, set the variable ```local=True``` in **app.py** (at the bottom of the script) and run:
 
 ```
 python app.py
