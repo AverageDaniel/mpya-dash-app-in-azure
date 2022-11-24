@@ -291,6 +291,7 @@ def run_local_update(profiles, processed):
         print()
         
         for p in prof_to_run:
+            print("Current profile:")
             print(p)
             completed = run_profile(p, z, years)
             # Update processed.json
