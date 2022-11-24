@@ -12,7 +12,9 @@ To start app locally, set the variable ```local=True``` in **app.py** and run:
 ```
 python app.py
 ```
-Depending on what the user inputs to the different fields in the dashboard, different datasets are loaded from the folder **local-data/Data** and presented to the user.
+Depending on what the user inputs to the different fields in the dashboard, different datasets are loaded from the folder **local-data/Data** and presented to the user. It should look something like:
+
+![image](https://user-images.githubusercontent.com/113591842/203738415-afa62d3b-31a4-4159-9da7-5e942ab6ac03.png)
 
 The profiles are defined in **profiles.json** in a JSON-object with the following structure:
 ```
