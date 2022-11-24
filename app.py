@@ -21,10 +21,12 @@ import utils
 #from memory_profiler import profile
 import sys
 
-local = True
-
+local = False
+print()
 print("Variable named local is set to", local,", should it be?")
-
+print()
+input("Press any button to continue")
+print()
 #####################################################################################################################################
 # Create Dash-App
     
