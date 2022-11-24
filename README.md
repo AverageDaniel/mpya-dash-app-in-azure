@@ -28,8 +28,9 @@ Where the lists in "keywords" are used to build a search query when filtering ad
 "keywords": [["Quality", "Kvalitet", "QA", "Quality Assurance"], ["Medtech", "Life Science"]]
 ```
 Which will be transformed into the search query:
-
+```
 ("Quality" OR "Kvalitet" OR "QA" OR "Quality Assurance") AND ("Medtech" OR "Life Science")
+```
 
 New profiles can be created by defining and adding them to **profiles.json**. Then run:
 ```
