@@ -20,8 +20,10 @@ import utils
 
 #from memory_profiler import profile
 import sys
+
 #####################################################################################################################################
-# Create Dash-App
+
+# Set initial variables and load initial data for the Dash-app
     
 mpya_purple = "rgb(155, 24, 137)"
 mpya_light_blue = "rgb(82, 198, 226)"
@@ -41,10 +43,18 @@ dfs['Current'] = utils.get_local_dataframe(profiles["Yellow Submarine"]["Data Sc
 
 teams = list(profiles.keys())
 
+#####################################################################################################################################
+
+# Initialize the Dash-app
+
 app = Dash(__name__, external_stylesheets=[dbc.themes.SLATE])
 server = app.server
 app.title = "MPYA-Dashboard"
 app._favicon = ('MPYASci&Tech_logo_original.png')
+
+#####################################################################################################################################
+
+# Create the callback functions, i.e. the functions that will run when the user interacts with different parts of the Dash-app
 
 @app.callback([
         Output(component_id='example-graph', component_property='figure'),
@@ -210,6 +220,10 @@ def toggle_modal(n1, is_open, loc, checked):
         return not is_open, table, comp
     return is_open, "", ""
 
+#####################################################################################################################################
+
+# Create the layout, and then set the layout property of the initialized Dash-app using app.layout
+
 card_1 = dbc.Card(
     [
         dbc.Checklist(
@@ -289,6 +303,7 @@ modal = dbc.Modal([
     html.Div("Placeholder", id='title-list'),
 ], id="title-modal", size="lg",is_open=False)
 
+# Actually set the layout in the app object
 app.layout = html.Div(children=[    
     html.Div([
         dbc.Row([
@@ -309,6 +324,9 @@ app.layout = html.Div(children=[
 
 
 #####################################################################################################################################
+
+# Start the server
+
 if __name__ == "__main__":
     # Run Dash-App
     local = False

@@ -45,7 +45,7 @@ def get_titles_from_comp(df, comp):
 
 ##########################################################################################################
 
-# Functions to read data from local version of data repository
+# Functions to read data from local folders
 
 local_data_path = "local-data/Data/"
 
