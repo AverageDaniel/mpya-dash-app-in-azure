@@ -318,8 +318,6 @@ if __name__ == "__main__":
 
 #profiles =  get_local_profiles()
 
-#run_update(profiles, processed)
-
 #new_profiles = [{'name': 'Embedded HW', 'keywords': [['Embedded HW', 'Embedded Hardware']]}]
 #team = "Deep Purple"
 
@@ -328,27 +326,3 @@ if __name__ == "__main__":
 #    s, profiles = update_local_profiles(p, team, profiles)
 #    if not s:
 #        print("Failed for profile:", p)
-
-'''
-
-#############################################
-
-# Fixa minnesproblem för Project lead
-
-------------------------------------
-    
-# Fixa Sthlms profiler och kompetenser
-
-
-Kvalitet:
-
-
-
-Process:
-
-
-------------------------------------
-
-############################################
-
-'''
