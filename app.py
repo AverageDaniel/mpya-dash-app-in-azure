@@ -20,13 +20,6 @@ import utils
 
 #from memory_profiler import profile
 import sys
-
-local = False
-print()
-print("Variable named local is set to", local,", should it be?")
-print()
-input("Press any button to continue")
-print()
 #####################################################################################################################################
 # Create Dash-App
     
@@ -318,6 +311,10 @@ app.layout = html.Div(children=[
 #####################################################################################################################################
 if __name__ == "__main__":
     # Run Dash-App
+    local = True
+    print()
+    print("Variable named local is set to", local,", should it be?")
+    print()
     if local:
         debug = True
         app.run_server(debug=debug)
